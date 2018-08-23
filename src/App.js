@@ -5,17 +5,26 @@ import { tempData } from "./data";
 
 class App extends Component {
   state = {
-    chartData: {
-      labels: ["11 Uhr", "12 Uhr", "13 Uhr", "14 Uhr"],
-      datasets: [
-        {
-          label: "Temperatur in Grad Celsius",
-          backgroundColor: "rgb(220, 220,	220)",
-          data: tempData
-        }
-      ]
-    }
+    chartData: {}
   };
+
+  componentWillMount() {
+    let temperatures = Object.values(tempData);
+    let times = Object.keys(tempData);
+
+    this.setState({
+      chartData: {
+        labels: times,
+        datasets: [
+          {
+            label: "Temperatur in Grad Celsius",
+            backgroundColor: "rgb(220, 220,	220)",
+            data: temperatures
+          }
+        ]
+      }
+    });
+  }
 
   render() {
     return <Bar data={this.state.chartData} />;
