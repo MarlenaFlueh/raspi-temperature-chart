@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { Bar } from "react-chartjs-2";
-import { tempData } from "./data";
+import { dataArray } from "./getData";
 
 class App extends Component {
   state = {
@@ -9,17 +9,20 @@ class App extends Component {
   };
 
   componentWillMount() {
-    let temperatures = Object.values(tempData);
-    let times = Object.keys(tempData);
+    let tempArry = [];
+    let timesArray = [];
+
+    dataArray.map(item => tempArry.push(item.degree));
+    dataArray.map(item => timesArray.push(item.degree));
 
     this.setState({
       chartData: {
-        labels: times,
+        labels: timesArray,
         datasets: [
           {
             label: "Temperatur in Grad Celsius",
             backgroundColor: "rgb(220, 220,	220)",
-            data: temperatures
+            data: tempArry
           }
         ]
       }
