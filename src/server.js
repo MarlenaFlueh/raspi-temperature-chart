@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const fs = require("fs");
 const app = express();
+const axios = require("axios");
 
 app.use(express.static(path.join(__dirname, "build")));
 
@@ -25,7 +26,7 @@ const fetchData = () => {
   }
 };
 
-const addTemp = temperature => {
+const addTemp = async temperature => {
   let tempArray = fetchData();
   const currentTime = new Date().getHours();
   const newTemp = {
@@ -33,8 +34,19 @@ const addTemp = temperature => {
     time: currentTime
   };
 
-  tempArray.push(newTemp);
-  fs.writeFileSync("data.json", JSON.stringify(tempArray));
+  //tempArray.push(newTemp);
+  // await fetch("https://arduino-temperature-7bce1.firebaseio.com/orders.json", {
+  //   method: "post",
+  //   body: JSON.stringify(newTemp)
+  // });
+  axios
+    .post(
+      "https://arduino-temperature-7bce1.firebaseio.com/orders.json",
+      newTemp
+    )
+    .then(res => console.log(res))
+    .catch(error => console.log(error));
+  //fs.writeFileSync("data.json", JSON.stringify(tempArray));
 };
 
 const getArduinoData = arduinoTemp => {
