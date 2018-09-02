@@ -1,15 +1,8 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const path = require("path");
-const app = express();
-app.use(express.static(path.join(__dirname, "build")));
+const http = require("http");
+const app = require("./serverApp");
 
-app.get("/ping", function(req, res) {
-  return res.send("pong");
-});
+const port = process.env.PORT || 8080;
 
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+const server = http.createServer(app);
 
-app.listen(process.env.PORT || 8080);
+server.listen(port);
