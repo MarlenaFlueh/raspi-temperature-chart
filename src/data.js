@@ -1,11 +1,17 @@
-export const tempData = [22, 24, 15, 13];
-
 const url = "/temperatures";
 
-fetch(url)
-  .then(data => data.json())
-  .then(res => {
-    const tempArray = [];
-    res.temperatures.map(res => tempArray.push(res.temp));
-    console.log(tempArray);
-  });
+export default async () => {
+  const res = await fetch(url);
+  const json = await res.json();
+
+  let array = [];
+  json.temperatures.map(item =>
+    array.push({ time: dateFromObjectId(item._id), temp: item.temp })
+  );
+  console.log(array);
+  return array;
+};
+
+const dateFromObjectId = function(objectId) {
+  return new Date(parseInt(objectId.substring(0, 8), 16) * 1000).toGMTString();
+};
