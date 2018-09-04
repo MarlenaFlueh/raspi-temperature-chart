@@ -4,6 +4,20 @@ const router = express.Router();
 
 const Temperature = require("../model/temperature");
 
+router.delete("/", (req, res, next) => {
+  Temperature.remove()
+    .exec()
+    .then(result => {
+      res.status(200).json(result);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: err
+      });
+    });
+});
+
 router.get("/", (req, res, next) => {
   Temperature.find()
     .select("_id temp")
