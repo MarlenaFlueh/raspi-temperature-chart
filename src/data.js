@@ -4,7 +4,7 @@ export default async () => {
   const res = await fetch(url);
   const json = await res.json();
 
-  return json.temperatures.map(item => ({
+  return json.map(item => ({
     time: dateFromObjectId(item._id),
     temp: item.temp
   }));
