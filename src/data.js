@@ -4,14 +4,12 @@ export default async () => {
   const res = await fetch(url);
   const json = await res.json();
 
-  let array = [];
-  json.temperatures.map(item =>
-    array.push({ time: dateFromObjectId(item._id), temp: item.temp })
-  );
-  console.log(array);
-  return array;
+  return json.temperatures.map(item => ({
+    time: dateFromObjectId(item._id),
+    temp: item.temp
+  }));
 };
 
-const dateFromObjectId = function(objectId) {
+const dateFromObjectId = objectId => {
   return new Date(parseInt(objectId.substring(0, 8), 16) * 1000).toGMTString();
 };
