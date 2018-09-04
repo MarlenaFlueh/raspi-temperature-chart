@@ -1,4 +1,4 @@
-const url = "/temperatures";
+const url = "https://raspi-temperature.herokuapp.com/";
 
 export default async () => {
   const res = await fetch(url);
