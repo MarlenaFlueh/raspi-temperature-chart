@@ -6,7 +6,7 @@ const Temperature = require("../model/temperature");
 
 router.get("/", (req, res, next) => {
   Temperature.find()
-    .select("_id temp time")
+    .select("_id temp")
     .exec()
     .then(docs => {
       const response = {
@@ -24,8 +24,7 @@ router.get("/", (req, res, next) => {
 router.post("/", (req, res, next) => {
   const temperature = new Temperature({
     _id: new mongoose.Types.ObjectId(),
-    temp: req.body.temp,
-    time: new Date().getHours()
+    temp: req.body.temp
   });
   temperature
     .save()
@@ -34,8 +33,7 @@ router.post("/", (req, res, next) => {
         message: "success created!",
         createdTemperatures: {
           _id: result._id,
-          temp: result.temp,
-          time: result.time
+          temp: result.temp
         }
       });
     })
