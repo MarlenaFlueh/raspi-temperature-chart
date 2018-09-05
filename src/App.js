@@ -9,8 +9,10 @@ class App extends Component {
       labels: null,
       datasets: [
         {
-          label: "Temperatur in Grad Celsius",
-          backgroundColor: "rgb(220, 220,	220)",
+          label: "Temperatur in Lüneburg (Grad Celsius)",
+          backgroundColor: "rgb(136, 219, 224)",
+          borderColor: "rgb(128, 185, 188)",
+          borderWidth: 1,
           data: null
         }
       ]

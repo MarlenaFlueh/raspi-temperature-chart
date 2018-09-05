@@ -11,5 +11,10 @@ export default async () => {
 };
 
 const dateFromObjectId = objectId => {
-  return new Date(parseInt(objectId.substring(0, 8), 16) * 1000).toGMTString();
+  const actualDate = new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
+  return `${new Date(actualDate).toLocaleDateString("de-DE", {
+    weekday: "long"
+  })}, ${(actualDate.getHours() < 10 ? "0" : "") +
+    actualDate.getHours()}:${(actualDate.getMinutes() < 10 ? "0" : "") +
+    actualDate.getMinutes()} Uhr`;
 };
