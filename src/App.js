@@ -3,6 +3,16 @@ import { Bar } from "react-chartjs-2";
 
 import tempData from "./data";
 
+const divStyle = {
+  position: "relative",
+  height: "90vh",
+  width: "90vw"
+};
+
+const headingStyle = {
+  "font-weight": "lighter"
+};
+
 class App extends Component {
   state = {
     chartData: {
@@ -34,7 +44,14 @@ class App extends Component {
   }
 
   render() {
-    return <Bar data={this.state.chartData} />;
+    return (
+      <div style={divStyle}>
+        <div>
+          <h1 style={headingStyle}>Temperatur Messung mit dem Raspberry Pi</h1>
+        </div>
+        <Bar data={this.state.chartData} />
+      </div>
+    );
   }
 }
 
