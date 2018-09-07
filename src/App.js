@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 
 import tempData from "./data";
+import Raspberry from "./utils/img/Raspberry_Pi_B+.svg";
 
 const divStyle = {
   position: "relative",
@@ -19,6 +20,11 @@ const textStyle = {
   "font-size": "1.1rem",
   padding: "1rem",
   "line-height": "2"
+};
+
+const raspStyle = {
+  height: "40%",
+  width: "40%"
 };
 
 class App extends Component {
@@ -63,6 +69,7 @@ class App extends Component {
           the data to a Restful API, connected with a database. To display the
           chart, you just get the chart data from the Restful API.
         </p>
+        <img src={Raspberry} style={raspStyle} alt="Raspberry" />
         <Bar data={this.state.chartData} />
       </div>
     );
