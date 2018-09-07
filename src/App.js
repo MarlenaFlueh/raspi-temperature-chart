@@ -5,12 +5,20 @@ import tempData from "./data";
 
 const divStyle = {
   position: "relative",
-  height: "90vh",
-  width: "90vw"
+  height: "100vh",
+  width: "60vw",
+  margin: "auto"
 };
 
 const headingStyle = {
-  "font-weight": "lighter"
+  "font-weight": "lighter",
+  "text-align": "center"
+};
+
+const textStyle = {
+  "font-size": "1.1rem",
+  padding: "1rem",
+  "line-height": "2"
 };
 
 class App extends Component {
@@ -19,7 +27,7 @@ class App extends Component {
       labels: null,
       datasets: [
         {
-          label: "Temperatur in Lüneburg (Grad Celsius)",
+          label: "Temperature, Lüneburg (degree Celsius)",
           backgroundColor: "rgb(136, 219, 224)",
           borderColor: "rgb(128, 185, 188)",
           borderWidth: 1,
@@ -46,9 +54,15 @@ class App extends Component {
   render() {
     return (
       <div style={divStyle}>
-        <div>
-          <h1 style={headingStyle}>Temperatur Messung mit dem Raspberry Pi</h1>
-        </div>
+        <h1 style={headingStyle}>Measure temperature with the Raspberry Pi</h1>
+        <p style={textStyle}>
+          Have you ever wondered what to do as a next project with your
+          Raspberry Pi? What about measuring the temperature and represent it in
+          a chart - everything you need is a Raspberry Pi and a temperature
+          sensor. You receive the temperature data with the Raspi, then you send
+          the data to a Restful API, connected with a database. To display the
+          chart, you just get the chart data from the Restful API.
+        </p>
         <Bar data={this.state.chartData} />
       </div>
     );

@@ -4,8 +4,7 @@
   "private": true,
   "dependencies": {
     "chart.js": "^2.7.2",
-    "engines": "^0.4.0",
-    "postinstall": "^0.4.1",
+    "momentjs": "^2.0.0",
     "react": "^16.4.2",
     "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.4.2",

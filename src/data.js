@@ -1,3 +1,4 @@
+import moment from "moment";
 const url = "https://raspi-temperature.herokuapp.com";
 
 export default async () => {
@@ -12,11 +13,5 @@ export default async () => {
 
 const dateFromObjectId = objectId => {
   const actualDate = new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
-  return `${new Date(actualDate)
-    .toLocaleDateString("de-DE", {
-      weekday: "long"
-    })
-    .substring(0, 2)}, ${(actualDate.getHours() < 10 ? "0" : "") +
-    actualDate.getHours()}:${(actualDate.getMinutes() < 10 ? "0" : "") +
-    actualDate.getMinutes()} Uhr`;
+  return moment(actualDate).format("MMM, LT");
 };
