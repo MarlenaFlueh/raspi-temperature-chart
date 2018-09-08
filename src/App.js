@@ -3,6 +3,7 @@ import { Bar } from "react-chartjs-2";
 
 import tempData from "./data";
 import Restful from "./utils/img/restapi.png";
+import Stack from "./utils/img/stack.png";
 
 const divStyle = {
   position: "relative",
@@ -19,7 +20,9 @@ const headingStyle = {
 
 const textStyle = {
   "font-size": "1.1rem",
-  "line-height": "2"
+  "line-height": "2",
+  "padding-top": "2rem",
+  "padding-bottom": "2rem"
 };
 
 const RestapiStyle = {
@@ -36,6 +39,11 @@ const strongStyle = {
   "font-size": "1.1rem",
   "font-weight": "bold",
   "padding-top": "1rem"
+};
+
+const stackStyle = {
+  width: "80%",
+  "margin-left": "10%"
 };
 
 class App extends Component {
@@ -80,7 +88,7 @@ class App extends Component {
           a Restful API, connected with a database. To display the chart, you
           just get the chart data from the Restful API.
         </p>
-        <Bar data={this.state.chartData} />
+        <img src={Stack} style={stackStyle} alt="Stack" />
         <p style={strongStyle}>Possible structure:</p>
         <ol style={olStyle}>
           <li>create Restful API with MongoDB Atlas connection</li>
@@ -91,12 +99,14 @@ class App extends Component {
         <p style={textStyle}>
           A Restful API is a programming interface and uses HTTP requests to
           handle data (PUT, GET and DELETE). The API simplifies the
-          communication of computer programs. APIs also allows to interact with
-          cloud services like the MongoDB Atlas database. After deploying it can
-          look like that:
+          communication of computer programs. An API also allows to interact
+          with cloud services like the MongoDB Atlas database. In the browser it
+          can look like that:
         </p>
         <img src={Restful} style={RestapiStyle} alt="Restful API" />
         <p style={strongStyle}>2. Raspberry Pi and temperature sensor</p>
+        <p style={strongStyle}>3. React app width chart</p>
+        <Bar data={this.state.chartData} />
       </div>
     );
   }
