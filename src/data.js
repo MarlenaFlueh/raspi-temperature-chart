@@ -13,5 +13,5 @@ export default async () => {
 
 const dateFromObjectId = objectId => {
   const actualDate = new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
-  return moment(actualDate).format("MMM, LT");
+  return moment(actualDate).format("LT");
 };
