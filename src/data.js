@@ -1,17 +1,31 @@
 import moment from "moment";
-const url = "https://raspi-temperature.herokuapp.com";
 
-export default async () => {
-  const res = await fetch(url);
+const tempApi = "https://raspi-temperature.herokuapp.com";
+const commentApi = "https://commentary-api.herokuapp.com/";
+
+export const tempData = async () => {
+  const res = await fetch(tempApi);
   const json = await res.json();
 
   return json.map(item => ({
-    time: dateFromObjectId(item._id),
-    temp: item.temp
+    time: dateFromObjectId(item._id, "LT"),
+    temp: item.temp,
+    id: item._id
   }));
 };
 
-const dateFromObjectId = objectId => {
+export const commentaryData = async () => {
+  const res = await fetch(commentApi);
+  const json = await res.json();
+
+  return json.map(item => ({
+    time: dateFromObjectId(item._id, "ll"),
+    comment: item.comment,
+    id: item._id
+  }));
+};
+
+const dateFromObjectId = (objectId, format) => {
   const actualDate = new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
-  return moment(actualDate).format("LT");
+  return moment(actualDate).format(format);
 };
