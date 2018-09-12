@@ -8,5 +8,11 @@ export {
   StackImg,
   FollowButton,
   TwitterIcon,
-  CenterText
+  CenterText,
+  CommentCounter,
+  BubbleIcon,
+  Comment,
+  UserIcon,
+  UserBox,
+  FloatDiv
 } from "./Styles";

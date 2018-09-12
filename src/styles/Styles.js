@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { css } from "styled-components";
 import { Twitter } from "styled-icons/fa-brands";
+import { ChatBubbleOutline } from "styled-icons/material";
+import { User } from "styled-icons/fa-regular";
 
 const breakpoints = {
   desktop: 1040,
@@ -80,8 +82,41 @@ export const TwitterIcon = styled(Twitter)`
   margin-top: 4px;
 `;
 
+export const BubbleIcon = styled(ChatBubbleOutline)`
+  width: 20px;
+`;
+
+export const UserIcon = styled(User)`
+  width: 20px;
+`;
+
 export const CenterText = styled.p`
   text-align: center;
   font-weight: lighter;
   color: #6cb4cb;
+`;
+
+export const Comment = styled.div`
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  width: 85%;
+`;
+
+export const UserBox = styled.div`
+  display: inline-block;
+  width: 10%;
+`;
+
+export const FloatDiv = styled.div`
+  display: block;
+  color: #6cb4cb;
+  padding-bottom: 0.5rem;
+`;
+
+export const CommentCounter = styled.p`
+  text-align: center;
+  padding: 30px;
+  color: #6cb4cb;
+  border-bottom: 1px solid #6cb4cb;
 `;
