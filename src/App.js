@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Bar } from "react-chartjs-2";
 import moment from "moment";
-import * as Style from "./styles/index";
 
-import tempData from "./data";
+import * as Style from "./styles/index";
+import { tempData } from "./data";
+import { commentaryData } from "./data";
 import Restful from "./utils/img/restapi.png";
 import Stack from "./utils/img/stack.png";
 
@@ -20,11 +21,13 @@ class App extends Component {
           data: null
         }
       ]
-    }
+    },
+    commentaries: null
   };
 
   async componentDidMount() {
     const res = await tempData();
+    const commentaryArray = await commentaryData();
     const data = res.map(item => item.temp);
     const labels = res.map(item => item.time);
 
@@ -33,9 +36,34 @@ class App extends Component {
         ...prevState.chartData,
         labels,
         datasets: prevState.chartData.datasets.map(set => ({ ...set, data }))
-      }
+      },
+      commentaries: commentaryArray
     }));
   }
+
+  showCommentLength = () => {
+    if (!this.state.commentaries) {
+      return " Loading...";
+    }
+    return this.state.commentaries.length;
+  };
+
+  showComments = () => {
+    if (!this.state.commentaries) {
+      return " Loading...";
+    }
+    return this.state.commentaries.map(item => (
+      <Fragment key={item.id}>
+        <Style.UserBox>
+          <Style.UserIcon />
+        </Style.UserBox>
+        <Style.Comment>
+          <Style.FloatDiv>{item.time}</Style.FloatDiv>
+          {item.comment}
+        </Style.Comment>
+      </Fragment>
+    ));
+  };
 
   render() {
     return (
@@ -80,6 +108,11 @@ class App extends Component {
         </Style.StrongText>
         <Style.StrongText>3. React app width chart</Style.StrongText>
         <Bar data={this.state.chartData} />
+        <Style.CommentCounter>
+          <Style.BubbleIcon />
+          {` ${this.showCommentLength()} comments`}
+        </Style.CommentCounter>
+        {this.showComments()}
       </Style.Container>
     );
   }
