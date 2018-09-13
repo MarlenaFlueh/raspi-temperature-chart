@@ -3,6 +3,7 @@ import { css } from "styled-components";
 import { Twitter } from "styled-icons/fa-brands";
 import { ChatBubbleOutline } from "styled-icons/material";
 import { User } from "styled-icons/fa-regular";
+import { Send } from "styled-icons/feather";
 
 const breakpoints = {
   desktop: 1040,
@@ -90,6 +91,11 @@ export const UserIcon = styled(User)`
   width: 20px;
 `;
 
+export const Link = styled.a`
+  color: #6cb4cb;
+  text-decoration: none;
+`;
+
 export const CenterText = styled.p`
   text-align: center;
   font-weight: lighter;
@@ -119,4 +125,26 @@ export const CommentCounter = styled.p`
   padding: 30px;
   color: #6cb4cb;
   border-bottom: 1px solid #6cb4cb;
+`;
+
+export const FormContainer = styled.div`
+  border-top: 1px solid #6cb4cb;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+`;
+
+export const Textarea = styled.textarea`
+  width: 85%;
+  line-height: 2;
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+`;
+
+export const SendIcon = styled(Send)`
+  width: 25px;
+  &:hover {
+    cursor: pointer;
+  }
 `;

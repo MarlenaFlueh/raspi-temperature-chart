@@ -1,7 +1,7 @@
 import moment from "moment";
 
 const tempApi = "https://raspi-temperature.herokuapp.com";
-const commentApi = "https://commentary-api.herokuapp.com/";
+const commentApi = "https://commentary-api.herokuapp.com";
 
 export const tempData = async () => {
   const res = await fetch(tempApi);
@@ -12,6 +12,17 @@ export const tempData = async () => {
     temp: item.temp,
     id: item._id
   }));
+};
+
+export const sendCommentary = async comment => {
+  try {
+    await fetch(commentApi, {
+      method: "post",
+      body: JSON.stringify(comment)
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const commentaryData = async () => {
