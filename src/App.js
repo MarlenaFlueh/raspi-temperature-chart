@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   onClickHandler = async comment => {
-    sendCommentary(comment);
+    await sendCommentary(comment);
     const commentaryArray = await commentaryData();
     this.setState({
       commentaries: commentaryArray

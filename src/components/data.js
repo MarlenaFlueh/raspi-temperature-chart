@@ -15,10 +15,11 @@ export const tempData = async () => {
   }));
 };
 
-export const sendCommentary = commentary => {
-  axios.post(commentApi, {
+export const sendCommentary = async commentary => {
+  const res = await axios.post(commentApi, {
     comment: commentary
   });
+  return res.data;
 };
 
 export const commentaryData = async () => {
