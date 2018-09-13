@@ -8,9 +8,9 @@ class Form extends Component {
     comment: ""
   };
 
-  onClickHandler = async comment => {
-    console.log(comment);
-    await sendCommentary(comment);
+  onClickHandler = comment => {
+    sendCommentary(comment);
+    this.setState({ comment: "" });
   };
 
   onChangeHandler = event => {
