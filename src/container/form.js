@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 
 import * as Style from "../styles/index";
-import { sendCommentary } from "../components/data";
 
 class Form extends Component {
   state = {
     comment: ""
-  };
-
-  onClickHandler = comment => {
-    sendCommentary(comment);
-    this.setState({ comment: "" });
   };
 
   onChangeHandler = event => {
@@ -19,16 +13,18 @@ class Form extends Component {
     });
   };
 
+  onSubmitHandler = () => {
+    console.log("success");
+  };
+
   render() {
-    console.log(this.state.comment);
     return (
       <Style.FormContainer>
-        <form>
+        <form onSubmit={this.onSubmitHandler}>
           <div>
             <Style.UserBox>
               <Style.SendIcon
-                onClick={() => this.onClickHandler(this.state.comment)}
-                data-tooltip="I am a tooltip"
+                onClick={() => this.props.clicked(this.state.comment)}
               />
             </Style.UserBox>
             <Style.Comment>
