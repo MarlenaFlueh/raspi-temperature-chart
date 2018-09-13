@@ -3,8 +3,7 @@ import { Bar } from "react-chartjs-2";
 import moment from "moment";
 
 import * as Style from "./styles/index";
-import { tempData } from "./components/data";
-import { commentaryData } from "./components/data";
+import { tempData, commentaryData, sendCommentary } from "./components/data";
 import Restful from "./utils/img/restapi.png";
 import Stack from "./utils/img/stack.png";
 import Form from "./container/form";
@@ -41,6 +40,14 @@ class App extends Component {
       commentaries: commentaryArray
     }));
   }
+
+  onClickHandler = async comment => {
+    sendCommentary(comment);
+    const commentaryArray = await commentaryData();
+    this.setState({
+      commentaries: commentaryArray
+    });
+  };
 
   showCommentLength = () => {
     if (!this.state.commentaries) {
@@ -128,7 +135,7 @@ class App extends Component {
           {` ${this.showCommentLength()} comments`}
         </Style.CommentCounter>
         {this.showComments()}
-        <Form />
+        <Form clicked={this.onClickHandler} />
       </Style.Container>
     );
   }
