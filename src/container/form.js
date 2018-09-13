@@ -13,19 +13,17 @@ class Form extends Component {
     });
   };
 
-  onSubmitHandler = () => {
-    console.log("success");
+  onClickHandler = () => {
+    this.props.clicked(this.state.comment);
+    this.setState({ comment: "" });
   };
-
   render() {
     return (
       <Style.FormContainer>
-        <form onSubmit={this.onSubmitHandler}>
+        <form>
           <div>
             <Style.UserBox>
-              <Style.SendIcon
-                onClick={() => this.props.clicked(this.state.comment)}
-              />
+              <Style.SendIcon onClick={this.onClickHandler} />
             </Style.UserBox>
             <Style.Comment>
               <Style.Textarea
