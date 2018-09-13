@@ -3,10 +3,11 @@ import { Bar } from "react-chartjs-2";
 import moment from "moment";
 
 import * as Style from "./styles/index";
-import { tempData } from "./data";
-import { commentaryData } from "./data";
+import { tempData } from "./components/data";
+import { commentaryData } from "./components/data";
 import Restful from "./utils/img/restapi.png";
 import Stack from "./utils/img/stack.png";
+import Form from "./container/form";
 
 class App extends Component {
   state = {
@@ -106,6 +107,20 @@ class App extends Component {
         <Style.StrongText>
           2. Raspberry Pi and temperature sensor
         </Style.StrongText>
+        <Style.TextBlock>
+          Next step is to get the temperature data from the sensor. On the
+          Raspberry Pi we can run a webserver, which receives temperature data
+          from the temperature sensor every hour. With a post request we can
+          send data to the Restful API. For communication between the Raspi and
+          the sensor we need the GPIOs (General Purpose Input Output). With four
+          wires (power, ground, receive and transmit) we connect the devices.
+          For using JavaScript on a Single Board Computer search for an npm
+          package. For example check out the{" "}
+          <Style.Link href="https://www.npmjs.com/package/gpio">
+            gpio
+          </Style.Link>{" "}
+          library.
+        </Style.TextBlock>
         <Style.StrongText>3. React app width chart</Style.StrongText>
         <Bar data={this.state.chartData} />
         <Style.CommentCounter>
@@ -113,6 +128,7 @@ class App extends Component {
           {` ${this.showCommentLength()} comments`}
         </Style.CommentCounter>
         {this.showComments()}
+        <Form />
       </Style.Container>
     );
   }

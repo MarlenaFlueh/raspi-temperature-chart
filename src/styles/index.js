@@ -14,5 +14,9 @@ export {
   Comment,
   UserIcon,
   UserBox,
-  FloatDiv
+  FloatDiv,
+  Link,
+  FormContainer,
+  Textarea,
+  SendIcon
 } from "./Styles";
