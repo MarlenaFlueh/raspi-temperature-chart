@@ -129,6 +129,20 @@ class App extends Component {
           library.
         </Style.TextBlock>
         <Style.StrongText>3. React app width chart</Style.StrongText>
+        <Style.TextBlock>
+          Last but not least we display temperatures using a React.js app. With{" "}
+          <Style.Link href="https://reactjs.org/docs/create-a-new-react-app.html">
+            create-react-app
+          </Style.Link>
+          , we create a new project. The npm package{" "}
+          <Style.Link href="https://www.npmjs.com/package/react-chartjs-2">
+            react-chartjs-2
+          </Style.Link>{" "}
+          is a simple, intuitive opportunity for React.js charts. To get the
+          data you fetch them from the Restful API. To simplify time handling I
+          used the <Style.Link href="https://momentjs.com/">moment</Style.Link>{" "}
+          library. Hopefully you'll be successful. Enjoy coding!
+        </Style.TextBlock>
         <Bar data={this.state.chartData} />
         <Style.CommentCounter>
           <Style.BubbleIcon />
