@@ -128,7 +128,7 @@ class App extends Component {
           </Style.Link>{" "}
           library.
         </Style.TextBlock>
-        <Style.StrongText>3. React app width chart</Style.StrongText>
+        <Style.StrongText>3. React app with chart</Style.StrongText>
         <Style.TextBlock>
           Last but not least we display temperatures using a React.js app. With{" "}
           <Style.Link href="https://reactjs.org/docs/create-a-new-react-app.html">
