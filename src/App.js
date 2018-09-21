@@ -7,7 +7,6 @@ import { tempData, commentaryData, sendCommentary } from "./components/data";
 import Restful from "./utils/img/restapi.png";
 import Stack from "./utils/img/stack.png";
 import Form from "./container/form";
-import { UserIcon } from "./styles/Styles";
 
 class App extends Component {
   state = {
@@ -46,18 +45,33 @@ class App extends Component {
     const generateColor = (min, max) =>
       Math.round(Math.random() * (max - min) + min);
 
-    const color =
-      generateColor(50, 255) +
-      "" +
-      generateColor(100, 255) +
-      "" +
-      generateColor(100, 255);
+    const commentArray = await commentaryData();
+    const cookieName = document.cookie.split(": ")[1];
+
+    let color;
+    if (document.cookie !== "" && commentArray !== []) {
+      const oldComment = commentArray.find(item => item.id === cookieName);
+      color = oldComment.color;
+      console.log("first");
+    } else {
+      color =
+        generateColor(100, 255) +
+        "" +
+        generateColor(100, 255) +
+        "" +
+        generateColor(200, 255);
+      console.log("second");
+    }
 
     await sendCommentary(comment, color);
     const commentaryArray = await commentaryData();
     this.setState({
       commentaries: commentaryArray
     });
+    if (document.cookie === "") {
+      const newCookie = commentaryArray[commentArray.length - 1].id;
+      document.cookie = `name: ${newCookie}`;
+    }
   };
 
   showCommentLength = () => {
@@ -74,7 +88,7 @@ class App extends Component {
     return this.state.commentaries.map(item => (
       <Fragment key={item.id}>
         <Style.UserBox>
-          <UserIcon inputColor={item.color} />
+          <Style.UserIcon inputColor={item.color} />
         </Style.UserBox>
         <Style.Comment>
           <Style.FloatDiv>{item.time}</Style.FloatDiv>
