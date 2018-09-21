@@ -7,6 +7,7 @@ import { tempData, commentaryData, sendCommentary } from "./components/data";
 import Restful from "./utils/img/restapi.png";
 import Stack from "./utils/img/stack.png";
 import Form from "./container/form";
+import { UserIcon } from "./styles/Styles";
 
 class App extends Component {
   state = {
@@ -42,7 +43,17 @@ class App extends Component {
   }
 
   onClickHandler = async comment => {
-    await sendCommentary(comment);
+    const generateColor = (min, max) =>
+      Math.round(Math.random() * (max - min) + min);
+
+    const color =
+      generateColor(50, 255) +
+      "" +
+      generateColor(100, 255) +
+      "" +
+      generateColor(100, 255);
+
+    await sendCommentary(comment, color);
     const commentaryArray = await commentaryData();
     this.setState({
       commentaries: commentaryArray
@@ -63,7 +74,7 @@ class App extends Component {
     return this.state.commentaries.map(item => (
       <Fragment key={item.id}>
         <Style.UserBox>
-          <Style.UserIcon />
+          <UserIcon inputColor={item.color} />
         </Style.UserBox>
         <Style.Comment>
           <Style.FloatDiv>{item.time}</Style.FloatDiv>

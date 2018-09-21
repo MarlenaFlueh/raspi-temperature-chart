@@ -15,9 +15,10 @@ export const tempData = async () => {
   }));
 };
 
-export const sendCommentary = async commentary => {
+export const sendCommentary = async (comment, color) => {
   const res = await axios.post(commentApi, {
-    comment: commentary
+    comment,
+    color
   });
   return res.data;
 };
@@ -29,7 +30,8 @@ export const commentaryData = async () => {
   return json.map(item => ({
     time: dateFromObjectId(item._id, "ll"),
     comment: item.comment,
-    id: item._id
+    id: item._id,
+    color: item.color
   }));
 };
 
