@@ -44,23 +44,20 @@ class App extends Component {
   onClickHandler = async comment => {
     const generateColor = (min, max) =>
       Math.round(Math.random() * (max - min) + min);
-
-    const commentArray = await commentaryData();
-    const cookieName = document.cookie.split(": ")[1];
+    const oldComments = this.state.commentaries;
+    const settedCookie = document.cookie.split(": ")[1];
 
     let color;
-    if (document.cookie !== "" && commentArray !== []) {
-      const oldComment = commentArray.find(item => item.id === cookieName);
-      color = oldComment.color;
-      console.log("first");
+    if (document.cookie !== "" && oldComments.length) {
+      const lastComment = oldComments.find(item => item.id === settedCookie);
+      color = lastComment.color;
     } else {
       color =
-        generateColor(100, 255) +
+        generateColor(30, 255) +
         "" +
-        generateColor(100, 255) +
+        generateColor(90, 255) +
         "" +
-        generateColor(200, 255);
-      console.log("second");
+        generateColor(100, 255);
     }
 
     await sendCommentary(comment, color);
@@ -68,8 +65,8 @@ class App extends Component {
     this.setState({
       commentaries: commentaryArray
     });
-    if (document.cookie === "") {
-      const newCookie = commentaryArray[commentArray.length - 1].id;
+    if (document.cookie === "" || oldComments.length === 0) {
+      const newCookie = commentaryArray[commentaryArray.length - 1].id;
       document.cookie = `name: ${newCookie}`;
     }
   };
