@@ -90,9 +90,9 @@ export const BubbleIcon = styled(ChatBubbleOutline)`
 export const UserIcon = styled(User)`
   width: 20px;
   color: rgb(
-    ${props => props.inputColor.toString().substring(0, 3)},
-    ${props => props.inputColor.toString().substring(4, 6)},
-    ${props => props.inputColor.toString().substring(7, 9)}
+    ${props => props.inputColor.split(",")[0]},
+    ${props => props.inputColor.split(",")[1]},
+    ${props => props.inputColor.split(",")[2]}
   );
 `;
 
