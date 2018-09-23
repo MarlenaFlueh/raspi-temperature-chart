@@ -45,7 +45,7 @@ class App extends Component {
     const settedCookie = document.cookie.split(": ")[1];
 
     let color;
-    if (false) {
+    if (document.cookie !== "" && oldComments.length) {
       const lastComment = oldComments.find(item => item.id === settedCookie);
       color = lastComment.color;
     } else {

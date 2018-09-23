@@ -8,7 +8,7 @@ import * as Style from "../styles/index";
 
 const guide = props => (
   <Fragment>
-    <Style.Heading>Measure temperature with the Raspberry Pi</Style.Heading>
+    <Style.Heading>Measuring temperature with the Raspberry Pi</Style.Heading>
     <Style.CenterText>
       {moment("2018-09-10T20:15:37.075Z").format("ll")}
     </Style.CenterText>
