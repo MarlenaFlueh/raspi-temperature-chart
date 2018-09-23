@@ -48,16 +48,16 @@ class App extends Component {
     const settedCookie = document.cookie.split(": ")[1];
 
     let color;
-    if (document.cookie !== "" && oldComments.length) {
+    if (false) {
       const lastComment = oldComments.find(item => item.id === settedCookie);
       color = lastComment.color;
     } else {
       color =
         generateColor(30, 255) +
-        "" +
-        generateColor(90, 255) +
-        "" +
-        generateColor(100, 255);
+        "," +
+        generateColor(50, 255) +
+        "," +
+        generateColor(0, 255);
     }
 
     await sendCommentary(comment, color);
