@@ -51,7 +51,7 @@ export const OrderedList = styled.ol`
   line-height: 2;
 `;
 
-export const StrongText = styled.p`
+export const StrongText = styled.h2`
   font-size: 1.1rem;
   font-weight: bold;
   padding-top: 1rem;
