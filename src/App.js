@@ -111,7 +111,7 @@ class App extends Component {
         </Style.FollowButton>
         <Style.TextBlock>
           Have you ever wondered what to do as a next Raspberry Pi project? What
-          about measuring the temperature and represent it in a chart -
+          about measuring the temperatures and represent them in a chart -
           everything you need is a Raspberry Pi and a temperature sensor. You
           receive the temperature data with the Raspi, then you send the data to
           a Restful API, connected with a database. To display the chart, you
@@ -122,12 +122,12 @@ class App extends Component {
         <Style.OrderedList>
           <li>create Restful API with MongoDB Atlas connection</li>
           <li>receive data with Raspberry Pi from the temperature sensor</li>
-          <li>display the temperature as a chart with a React.js app</li>
+          <li>display the temperatures as a chart with a React.js app</li>
         </Style.OrderedList>
         <Style.StrongText>1. Restful API</Style.StrongText>
         <Style.TextBlock>
           A Restful API is a programming interface and uses HTTP requests to
-          handle data (PUT, GET and DELETE). The API simplifies the
+          handle data (PUT, GET and DELETE etc.). The API simplifies the
           communication of computer programs. An API also allows to interact
           with cloud services like the MongoDB Atlas database. In the browser it
           can look like that:
@@ -161,11 +161,17 @@ class App extends Component {
             react-chartjs-2
           </Style.Link>{" "}
           is a simple, intuitive opportunity for React.js charts. To get the
-          data you fetch them from the Restful API. To simplify time handling I
+          data, fetch them from the Restful API. To simplify time handling I
           used the <Style.Link href="https://momentjs.com/">moment</Style.Link>{" "}
-          library. Hopefully you'll be successful. Enjoy coding!
+          library.
         </Style.TextBlock>
         <Bar data={this.state.chartData} />
+        <Style.TextBlock>
+          If you haven't got a Raspberry Pi, but you want to try out this
+          node-react-chart.js architecture, just fetch data from another weather
+          API. But I promise, it's more fun with own measured temperatures!
+          Hopefully you'll be successful. Enjoy coding ;)
+        </Style.TextBlock>
         <Style.CommentCounter>
           <Style.BubbleIcon />
           {` ${this.showCommentLength()} comments`}
